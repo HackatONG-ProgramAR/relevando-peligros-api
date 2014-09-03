@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
+import org.utils.PeligroSource;
 
 @Configuration
 @EnableMongoRepositories
@@ -34,7 +35,8 @@ public class Application extends RepositoryRestMvcConfiguration implements Comma
 	//TODO: remove interface implementation 
 	@Override
 	public void run(String... args) throws Exception {
-		peligroRepository.deleteAll();
+		
+		peligroRepository.delete(peligroRepository.findPeligroBySource(PeligroSource.WEBPAGE));
 		
 		for (Peligro peligro : DataHelper.buildPeligrosFromSite()) {
 			peligroRepository.save(peligro);

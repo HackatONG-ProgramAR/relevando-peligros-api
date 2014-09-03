@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.Set;
 
 import org.springframework.data.annotation.Id;
+import org.utils.PeligroSource;
 
 public class Peligro {
 	
@@ -12,25 +13,26 @@ public class Peligro {
 	private String titulo;
 	private String descripcion;
 	private Set<Imagen> imagenes;
-	private URL siteUrl;	
+	private URL siteUrl;
+	private PeligroSource source;
 	
 	public Peligro() {
 		
 	}
 
-	public Peligro(String titulo, String descripcion, Set<Imagen> imagenes, URL siteUrl) {
-		
+	public Peligro(String titulo, String descripcion, Set<Imagen> imagenes, URL siteUrl, PeligroSource source) {
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.imagenes = imagenes;
 		this.siteUrl = siteUrl;
+		this.source = source;
 	}
 	
 	
 	@Override
 	public String toString() {
 		return "Peligro [id=" + id + ", titulo=" + titulo + ", descripcion="
-				+ descripcion + ", siteUrl=" + siteUrl + "]";
+				+ descripcion + ", siteUrl=" + siteUrl + ", source=" + source + "]";
 	}
 	
 	public String getId() {
@@ -70,6 +72,14 @@ public class Peligro {
 
 	public void setSiteUrl(URL siteUrl) {
 		this.siteUrl = siteUrl;
+	}
+
+	public PeligroSource getSource() {
+		return source;
+	}
+
+	public void setSource(PeligroSource source) {
+		this.source = source;
 	}
 
 }

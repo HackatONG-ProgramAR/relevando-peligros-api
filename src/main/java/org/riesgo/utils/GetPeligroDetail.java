@@ -10,6 +10,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.riesgo.model.Imagen;
 import org.riesgo.model.Peligro;
+import org.utils.PeligroSource;
 
 public class GetPeligroDetail {
 
@@ -45,7 +46,7 @@ public class GetPeligroDetail {
 			// self link
 			URL siteUrl = new URL(doc.baseUri());
 			
-			peligro = new Peligro(titulo.text(), descripcion.text(), imagenes, siteUrl);
+			peligro = new Peligro(titulo.text(), descripcion.text(), imagenes, siteUrl, PeligroSource.WEBPAGE);
 			
 			System.out.println(peligro);
 			
