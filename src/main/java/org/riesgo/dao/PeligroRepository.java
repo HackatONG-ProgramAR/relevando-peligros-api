@@ -3,12 +3,11 @@ package org.riesgo.dao;
 import java.util.Set;
 
 import org.riesgo.model.Peligro;
+import org.riesgo.utils.PeligroSource;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.Description;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-import org.utils.PeligroSource;
 
 /**
  * Operaciones CRUD basicas soportadas por MongoRepository. El resto de las

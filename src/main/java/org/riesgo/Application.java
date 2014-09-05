@@ -6,6 +6,7 @@ import java.net.URISyntaxException;
 import org.riesgo.dao.PeligroRepository;
 import org.riesgo.model.Peligro;
 import org.riesgo.utils.DataHelper;
+import org.riesgo.utils.PeligroSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,7 +16,6 @@ import org.springframework.context.annotation.Import;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
-import org.utils.PeligroSource;
 
 @Configuration
 @EnableMongoRepositories

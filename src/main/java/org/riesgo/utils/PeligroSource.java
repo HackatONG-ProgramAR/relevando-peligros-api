@@ -1,4 +1,4 @@
-package org.utils;
+package org.riesgo.utils;
 
 public enum PeligroSource {
 	MOBILE(1), WEBPAGE(2);

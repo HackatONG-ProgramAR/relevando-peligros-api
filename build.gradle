@@ -17,7 +17,6 @@ apply plugin: 'idea'
 apply plugin: 'spring-boot' 
 
 jar {
-    baseName = 'riesgo-mongodb'
     version = '1.0'
 }
 sourceCompatibility = 1.7

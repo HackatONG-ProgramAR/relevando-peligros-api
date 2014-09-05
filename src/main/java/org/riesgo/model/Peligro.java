@@ -3,8 +3,8 @@ package org.riesgo.model;
 import java.net.URL;
 import java.util.Set;
 
+import org.riesgo.utils.PeligroSource;
 import org.springframework.data.annotation.Id;
-import org.utils.PeligroSource;
 
 public class Peligro {
 	
