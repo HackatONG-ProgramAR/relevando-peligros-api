@@ -54,6 +54,7 @@ public class PeligroCommandController {
 			@RequestParam("file") MultipartFile file,
 			@RequestParam("file2") MultipartFile file2,
 			@RequestParam("file3") MultipartFile file3) {
+
 		try {
 			PicasawebService picassaService = getPicassaService();
 			String imageUrl = null;
@@ -93,28 +94,28 @@ public class PeligroCommandController {
 			throws MalformedURLException {
 		Set<Imagen> imagenes = new HashSet<Imagen>();
 
-		if(imageUrl != null){
+		if (imageUrl != null) {
 			URL url = new URL(imageUrl);
-			
+
 			Imagen image = new Imagen();
 			image.setPath(url);
 			image.setTitulo(titulo);
 			imagenes.add(image);
-			
+
 			Imagen mobileThumbnail = new Imagen();
 			mobileThumbnail.setPath(url);
 			mobileThumbnail.setTitulo("mobileThumbnail");
 			imagenes.add(mobileThumbnail);
 		}
-		
-		if(imageUrl2 != null){
+
+		if (imageUrl2 != null) {
 			Imagen image2 = new Imagen();
 			image2.setPath(new URL(imageUrl2));
 			image2.setTitulo(titulo);
-			imagenes.add(image2);			
+			imagenes.add(image2);
 		}
 
-		if(imageUrl3 != null){
+		if (imageUrl3 != null) {
 			Imagen image3 = new Imagen();
 			image3.setPath(new URL(imageUrl3));
 			image3.setTitulo(titulo);
@@ -122,10 +123,16 @@ public class PeligroCommandController {
 		}
 
 		Peligro peligro = new Peligro();
-		peligro.setDescripcion(descripcion);
-		peligro.setTitulo(titulo);
+		if (!descripcion.isEmpty()) {
+			peligro.setDescripcion(descripcion);
+		}
+		if (!titulo.isEmpty()) {
+			peligro.setTitulo(titulo);
+		}
 		peligro.setSource(PeligroSource.MOBILE);
-		peligro.setImagenes(imagenes);
+		if (!imagenes.isEmpty()) {
+			peligro.setImagenes(imagenes);
+		}
 
 		return peligroRepository.save(peligro);
 	}
@@ -149,7 +156,7 @@ public class PeligroCommandController {
 		PhotoEntry myPhoto = new PhotoEntry();
 		myPhoto.setTitle(new PlainTextConstruct(titulo));
 		myPhoto.setDescription(new PlainTextConstruct(descripcion));
-		myPhoto.setClient("myClientName");
+		myPhoto.setClient("peligrosMobApp");
 
 		MediaFileSource myMedia = new MediaFileSource(archivo, "image/jpeg");
 		myPhoto.setMediaSource(myMedia);
