@@ -18,3 +18,9 @@ Api Rest necesaria para la aplicación de relevando peligros "mobile"
 
 5. (Opcional) Descargar e instalar la siguiente herramienta para visualizar la Base de Datos Mongo DB 
    * https://github.com/Imaginea/mViewer
+
+
+### Dibujo de Arquitectura
+
+![Dibujo de arquitectura]
+(https://github.com/HackatONG-ProgramAR/relevando-peligros-api/blob/master/images/arch_schema.jpg)
