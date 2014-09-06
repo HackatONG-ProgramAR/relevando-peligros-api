@@ -3,6 +3,8 @@ package org.riesgo;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import javax.servlet.MultipartConfigElement;
+
 import org.riesgo.dao.PeligroRepository;
 import org.riesgo.model.Peligro;
 import org.riesgo.utils.DataHelper;
@@ -11,6 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.context.embedded.MultipartConfigFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
@@ -20,6 +25,7 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguratio
 @Configuration
 @EnableMongoRepositories
 @Import(RepositoryRestMvcConfiguration.class)
+@ComponentScan
 @EnableAutoConfiguration
 public class Application extends RepositoryRestMvcConfiguration implements CommandLineRunner {
 
@@ -54,4 +60,12 @@ public class Application extends RepositoryRestMvcConfiguration implements Comma
 		      e.printStackTrace();
 		    }
 	}
+	
+	@Bean
+    MultipartConfigElement multipartConfigElement() {
+        MultipartConfigFactory factory = new MultipartConfigFactory();
+        factory.setMaxFileSize("6MB");
+        factory.setMaxRequestSize("6MB");
+        return factory.createMultipartConfig();
+    }
 }
